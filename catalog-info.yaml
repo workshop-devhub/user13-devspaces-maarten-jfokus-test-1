@@ -1,0 +1,53 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: user13-devspaces-maarten-jfokus-test-1-service
+  description: 'The Liberty service for user13-devspaces-maarten-jfokus-test-1 (Creates an Open Liberty getting started app)'
+  annotations:
+    argocd/app-name: user13-devspaces-maarten-jfokus-test-1-dev
+    backstage.io/kubernetes-id: user13-devspaces-maarten-jfokus-test-1
+    backstage.io/kubernetes-namespace: user13-devspaces
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: workshop-devhub/user13-devspaces-maarten-jfokus-test-1
+    janus-idp.io/tekton : user13-devspaces-maarten-jfokus-test-1
+    argocd/app-selector: user13-devspaces-maarten-jfokus-test-1-dev
+    openliberty.io/app-kind: OpenLibertyApplication
+  labels:
+    backstage.io/kubernetes-id: user13-devspaces-maarten-jfokus-test-1
+  tags:
+    - java
+    - liberty
+    - maven
+    - example
+  links:
+    - url: https://console-openshift-console.apps.cluster-ssghb.ssghb.sandbox512.opentlc.com/k8s/ns/user13-devspaces/deployments/user13-devspaces-maarten-jfokus-test-1
+      title: Deployment
+      icon: web
+    - url: https://openliberty.io/docs/latest/overview.html
+      title: Open Liberty Docs
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: "user:default/maarten-vandeperre"
+  providesApis:
+    - user13-devspaces-maarten-jfokus-test-1-api
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: user13-devspaces-maarten-jfokus-test-1-api
+  description: API surface exposed by the Liberty service
+  links:
+    - url: https://user13-devspaces-maarten-jfokus-test-1-user13-devspaces.apps.cluster-ssghb.ssghb.sandbox512.opentlc.com/q/swagger-ui
+      title: Swagger UI
+      icon: web
+    - url: https://github.com/workshop-devhub/user13-devspaces-maarten-jfokus-test-1/-/blob/main/src/main/resources/META-INF/openapi.yaml
+      title: API Spec
+      icon: code
+spec:
+  type: openapi
+  lifecycle: production
+  owner: "user:default/maarten-vandeperre"
+  definition:
+    $text: ./src/main/resources/META-INF/openapi.yaml
