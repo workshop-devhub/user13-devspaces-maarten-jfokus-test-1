@@ -45,5 +45,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ env.IMAGE_REGISTRY }}/${{values.namespace | dump}}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+          tags: ${{ env.IMAGE_REGISTRY }}/user13-devspaces/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
           labels: ${{ steps.meta.outputs.labels }}
